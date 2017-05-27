@@ -1,0 +1,9 @@
+<template>
+	<loading-indicator loading.bind="router.isNavigating || api.isRequesting"></loading-indicator>
+
+	<navigation router.bind="router"></navigation>
+	<div class="site-content">
+		<h1 class='page-header'>Joe Lissner</h1>
+		<router-view></router-view>
+	</div>
+</template>
