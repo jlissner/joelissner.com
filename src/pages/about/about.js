@@ -1,5 +1,7 @@
 export class About {
 	constructor() {
-		this.age = new Date(new Date() - new Date('04/08/1989')).getYear();
+		this.coverLetter = `
+			<p>This is a <strong>test</strong></p>
+		`;
 	}
 }

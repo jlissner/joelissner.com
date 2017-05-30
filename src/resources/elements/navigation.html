@@ -2,12 +2,15 @@
 	<require from='./navigation.css'></require>
 
 	<div class="site-nav ${isOpen ? 'active' : ''}">
-		<button class="btn btn-toggle-nav ${isOpen ? 'active' : ''}" click.trigger="toggleNav()">
-			<span class="sr-only">Toggle Navigation</span>
-			<span class="menu-bar"></span>
-			<span class="menu-bar"></span>
-			<span class="menu-bar"></span>
-		</button>
+		<div class="nav-bar">
+			<h1><a href="/">Joe Lissner</a></h1>
+			<button class="btn btn-toggle-nav ${isOpen ? 'active' : ''}" click.trigger="toggleNav()">
+				<span class="sr-only">Toggle Navigation</span>
+				<span class="menu-bar"></span>
+				<span class="menu-bar"></span>
+				<span class="menu-bar"></span>
+			</button>
+		</div>
 		<nav role='navigation' class="${isOpen ? 'active' : ''}">
 			<ul>
 				<li repeat.for="row of router.navigation" class="${row.isActive ? 'active' : ''}" role="presentation">

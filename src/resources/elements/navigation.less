@@ -4,7 +4,6 @@
 
 .site-nav {
 	position: fixed;
-	z-index: 1;
 	text-align: right;
 	top: 0;
 	left: 0;
@@ -59,15 +58,38 @@
 		}
 	}
 }
+	.nav-bar {
+		display: flex;
+		border-bottom: 1px solid @gray-light;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 15px;
+
+		h1 {
+			margin: 0;
+			padding: 0;
+			font-size: 36px;
+
+			a {
+				color: white;
+		
+				&:hover {
+					text-decoration: none;
+				}
+			}
+		}
+	}
+
 	.btn-toggle-nav {
 		position: relative;
 		background: none;
 		border: none;
 		color: @brand-primary;
-		padding-right: 15px;
 		width: 60px;
 		box-shadow: none;
 		z-index: 1;
+		padding: 10px 15px;
+		display: block;
 
 		.menu-bar {
 			height: 5px;
