@@ -106,6 +106,7 @@
               "nprogress.css"
             ]
           },
+          "aurelia-animator-css",
           "aurelia-binding",
           "aurelia-bootstrapper",
           "aurelia-dependency-injection",

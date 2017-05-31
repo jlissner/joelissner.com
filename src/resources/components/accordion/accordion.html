@@ -1,6 +1,14 @@
 <template bindable="titleTest">
 	<require from='../dropdown/dropdown'></require>
-	<h1>${title}</h1>
-	<dropdown></dropdown>
-	<dropdown></dropdown>
+	
+	<h1>${titleTest}</h1>
+	<dropdown model.bind="{isOpen: true}">
+		<div slot="title">number 1</div>
+		<div slot="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium quo, eligendi minima quam perspiciatis sequi unde veniam itaque velit quae sint tempora, vero sed fugit. Quidem animi provident harum velit.</div>
+	</dropdown>
+
+	<dropdown>
+		<div slot="title">number 2</div>
+		<div slot="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium quo, eligendi minima quam perspiciatis sequi unde veniam itaque velit quae sint tempora, vero sed fugit. Quidem animi provident harum velit.</div>
+	</dropdown>
 </template>

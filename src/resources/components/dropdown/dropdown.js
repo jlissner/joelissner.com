@@ -3,16 +3,19 @@ import {EventAggregator} from 'aurelia-event-aggregator';
 
 let id = 0;
 
-@inject(EventAggregator);
+@inject(EventAggregator, Element)
 export class Dropdown {
-	constructor (ea) {
+	constructor(ea, elem) {
+		this.elem = elem;
 		this.id = id++;
-		this.title = 'Dropdown ' + this.id;
-		this.text = 'This is my text, etc.';
-		this.isOpen = true;
 	}
 
-	toggleOpen () {
+	bind(test, opts) {
+		this.isOpen = opts.isOpen;
+	}
+
+	toggleOpen(openAttr) {
+		// openAttr.isOpen = !openAttr.isOpen; this works but shouldn't be needed, will keep in for reference
 		this.isOpen = !this.isOpen;
 	}
 }

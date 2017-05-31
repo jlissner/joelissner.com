@@ -1,11 +1,10 @@
 <template>
-	<h2 click.trigger="toggleOpen()">
-		${title}
-	</h2>
-	<div show.bind="isOpen">
-		${text}
-		<br>
-		${height}
+	<br><br><br>
+	------------ ${isOpen} ------------
+	<div click.trigger="toggleOpen(openAttr)">
+		<slot name="title"></slot>
 	</div>
-
+	<div open="is-open.bind: isOpen; speed: 2000;" element.ref="body" open.ref='openAttr'>
+		<slot name="text"></slot>
+	</div>
 </template>
