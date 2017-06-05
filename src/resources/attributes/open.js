@@ -22,9 +22,9 @@ export class OpenCustomAttribute {
 
 	isOpenChanged(newValue, oldValue) {
 		if (newValue) {
-			this.$this.stop().slideDown(this.speed || 270);
+			this.$this.stop().slideDown(parseInt(this.speed, 10) || 270);
 		} else {
-			this.$this.stop().slideUp(this.speed || 270);
+			this.$this.stop().slideUp(parseInt(this.speed, 10) || 270);
 		}
 	}
 }

@@ -1,14 +1,10 @@
-<template bindable="titleTest">
+<template>
 	<require from='../dropdown/dropdown'></require>
-	
-	<h1>${titleTest}</h1>
-	<dropdown model.bind="{isOpen: true}">
-		<div slot="title">number 1</div>
-		<div slot="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium quo, eligendi minima quam perspiciatis sequi unde veniam itaque velit quae sint tempora, vero sed fugit. Quidem animi provident harum velit.</div>
-	</dropdown>
 
-	<dropdown>
-		<div slot="title">number 2</div>
-		<div slot="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium quo, eligendi minima quam perspiciatis sequi unde veniam itaque velit quae sint tempora, vero sed fugit. Quidem animi provident harum velit.</div>
-	</dropdown>
+	<div repeat.for="_data of data">
+		<dropdown class="dropdown__accordion" is-open.bind="activeItem == $index" is-accordion="true">
+			<div click.trigger="changeActive($index)" slot="title">${_data.title}</div>
+			<div slot="text">${_data.text}</div>
+		</dropdown>
+	</div>
 </template>

@@ -1,10 +1,44 @@
 <template>
+	<require from="../../resources/components/dropdown/dropdown"></require>
+
 	<div class="panel-body">
 		<div class="lead" innerHTML.bind="coverLetter"></div>
 
-		<blockquote>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus cumque voluptatum, in, fugiat aperiam voluptate labore quo sit voluptatem quod assumenda architecto deleniti itaque cum necessitatibus mollitia! Voluptatum, ullam iste.
-		</blockquote>
+		<p class="lead">Joe is an experienced developer who enjoys to travel.</p>
+
+		<h2>Technologies</h2>
+		<dropdown>
+			<div slot="title">Front End</div>
+			<div slot="text">
+				<p>
+					Joe is an accomplished Front End Developer, helping clients make their designs come to life. Joe not only has a firm grasp of <strong>HTML5</strong> and <strong>CSS3</strong>, but he also is a very strong <strong>Javascript</strong> programmer.
+				</p>
+
+				<p>Joe has a lot of experience using <strong>LESS</strong>, not only writing and reusing existing styles, but also creating his own mixins and computed styles.</p>
+			</div>
+		</dropdown>
+		<ul>
+			<li>
+				<h3>Front End</h3>
+				<ul>
+					<li>HTML5/CSS3</li>
+					<li>LESS/SASS</li>
+					<li>
+						Javascript
+						<ul>
+							<li>jQuery</li>
+							<li>moment</li>
+							<li>spectrum</li>
+							<li>Aurelia</li>
+							<li>React</li>
+							<li>Angular</li>
+						</ul>
+					</li>
+					<li></li>
+				</ul>
+			</li>
+			<li></li>
+		</ul>
 		
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil, ratione, recusandae! Voluptate eos soluta, provident modi animi architecto quam! Repellat nam incidunt pariatur, aspernatur, perferendis nisi. Blanditiis adipisci odio laboriosam.</p>
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque sapiente beatae suscipit cupiditate quia. Ex earum ipsa in. Dolorem vero hic similique? Omnis rerum quod eius repellendus harum, soluta libero!</p>

@@ -1,10 +1,8 @@
-<template>
-	<br><br><br>
-	------------ ${isOpen} ------------
-	<div click.trigger="toggleOpen(openAttr)">
+<template class='dropdown'>
+	<div click.trigger="toggleOpen(openAttr)" aria-expanded="${isOpen}">
 		<slot name="title"></slot>
 	</div>
-	<div open="is-open.bind: isOpen; speed: 2000;" element.ref="body" open.ref='openAttr'>
+	<div open="is-open.bind: isOpen; speed: 230;" element.ref="body" open.ref='openAttr' aria-hidden="${!isOpen}">
 		<slot name="text"></slot>
 	</div>
 </template>

@@ -1,9 +1,11 @@
-
-import Test from './test';
+import {bindable} from 'aurelia-framework';
 
 export class Accordion {
+	@bindable title;
+	@bindable data;
+
 	constructor() {
-		this.title = Test.testTitle;
+		this.activeItem = 0;
 	}
 
 	created() {}
@@ -12,6 +14,11 @@ export class Accordion {
 	detached() {}
 	unbind() {}
 	activate(params, routeConfig) {
-		// gets here when routed to
+		// gets here when routed to or composed
+	}
+
+	changeActive(id) {
+		// openAttr.isOpen = !openAttr.isOpen; this works but shouldn't be needed, will keep in for reference
+		this.activeItem = this.activeItem === id ? -1 : id;
 	}
 }
