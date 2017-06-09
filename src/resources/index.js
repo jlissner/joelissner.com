@@ -1,6 +1,6 @@
 export function configure(config) {
 	config.globalResources([
-		'./styles/bootstrap.css',
+		'../assets/styles/bootstrap.css',
 		'./elements/loading-indicator',
 		'./elements/navigation',
 		'./attributes/open'

@@ -14,6 +14,7 @@ export class App {
 			{ route: 'showcase',  moduleId: 'pages/showcase/showcase.html',   name: 'showcase',  title: 'Showcase', nav: true},
 			{ route: 'code',  moduleId: 'pages/code/code',   name: 'code',  title: 'Code', nav: true},
 			{ route: 'contact',  moduleId: 'no-selection',   name: 'contact',  title: 'Contact', nav: true},
+			{ route: 'football',  moduleId: 'pages/football/football',   name: 'football',  title: 'Football', nav: true},
 			{ route: 'contacts/:id', moduleId: 'contact-detail', name: 'contacts'}
 		]);
 
