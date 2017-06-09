@@ -1,6 +1,5 @@
-@import "../styles/variables.less"; 
-@import "../styles/mixins.less";
-
+@import "../../assets/styles/variables.less"; 
+@import "../../assets/styles/mixins.less";
 
 .site-nav {
 	position: fixed;
@@ -116,13 +115,14 @@
 
 @media (min-width: @screen-sm) {
 	.site-nav {
+		//background: url('/src/assets/images/Death_to_Stock_Equinox_13--optimized.jpg') no-repeat scroll center center / cover;
 		width: 400px;
 		top: 0;
 		height: 100%;
 		border-right: 1px solid @gray;
 
 		nav {
-			top: 0;
+			top: 40%;
 			background: none;
 		}
 			ul {
