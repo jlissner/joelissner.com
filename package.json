@@ -1,11 +1,7 @@
 {
-  "name": "aurelia-contact-manager",
-  "description": "An Aurelia client application.",
+  "name": "joe-lissner-profile",
+  "description": "Joe Lissner's profile and playground.",
   "version": "0.1.0",
-  "repository": {
-    "type": "???",
-    "url": "???"
-  },
   "license": "MIT",
   "dependencies": {
     "aurelia-animator-css": "^1.0.1",
