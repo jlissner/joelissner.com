@@ -1,6 +1,64 @@
 <template>
 	<require from="../../resources/components/accordion/accordion"></require>
 
+	<div class="container">
+		<h2>SQL Cheat Sheet</h2>
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">Query</h4>
+			</div>
+			<div class="panel-body">
+				<p class="lead">Basic Querying</p>
+				<ul>
+
+					<li><strong>SELECT</strong> is the clause you use every time you want to query information from a database.</li>
+					<li><strong>DISTINCT</strong> is used to return unique values in the result set. It filters out all duplicate values.</li>
+					<li><strong>WHERE</strong> is a popular command that lets you filter the results of the query based on conditions that you specify.</li>
+					<li><strong>LIKE</strong> and <strong>BETWEEN</strong> are special operators that can be used in a <strong>WHERE</strong> clause</li>
+					<li><strong>AND</strong> and <strong>OR</strong> are special operators that you can use with <strong>WHERE</strong> to filter the query on two or more conditions.</li>
+					<li><strong>ORDER</strong> BY lets you sort the results of the query in either ascending or descending order.</li>
+					<li><strong>LIMIT</strong> lets you specify the maximum number of rows that the query will return. This is especially important in large tables that have thousands or even millions of rows.</li>
+				</ul>
+
+				<p class="lead">Aggregate functions combine multiple rows together to form a single value of more meaningful information.</p>
+				<ul>
+					<li><strong>COUNT()</strong> takes the name of a column(s) as an argument and counts the number of rows where the value(s) is not NULL.</li>
+					<li><strong>GROUP BY</strong> is a clause used with aggregate functions to combine data from one or more columns.</li>
+					<li><strong>SUM()</strong> takes the column name as an argument and returns the sum of all the values in that column.</li>
+					<li><strong>MAX()</strong> takes the column name as an argument and returns the largest value in that column.</li>
+					<li><strong>MIN()</strong> takes the column name as an argument and returns the smallest value in that column.</li>
+					<li><strong>AVG()</strong> takes a column name as an argument and returns the average value for that column.</li>
+					<li><strong>ROUND()</strong> takes two arguments, a column name and the number of decimal places to round the values in that column.</li>
+				</ul>
+
+				<div class="alert alert-info">
+					<strong>SELECT</strong> <code as-element='true'>*</code>, <code as-element='true'>col1 <em>[as c1]</em></code>, <code as-element='true'>col2</code>, <code as-element='true'><strong>COUNT</strong>(*)</code>, <code as-element='true'><strong>MAX</strong>(price)</code>, <code as-element='true'><strong>MIN</strong>(price)</code>, <code as-element='true'><strong>ROUND</strong>(<strong>AVG</strong>(price), 2)</code>, <code as-element='true'><strong>SUM</strong>(col2)</code><br/>
+					<strong>FROM</strong> <code as-element='true'>table1 <em>[as t1]</em></code><br/>
+					<strong>WHERE</strong> <code as-element='true'>price</code> > <code as-element='true'>0</code><br/>
+					<strong>AND</strong> <code as-element='true'>price</code> < <code as-element='true'>100</code><br/>
+					<strong>AND</strong> <code as-element='true'>year</code> <strong>BETWEEN</strong> <code as-element='true'>1990</code> <strong>AND</strong> <code as-element='true'>2000</code><br/>
+					<strong>OR</strong> <code as-element='true'>category</code> <strong>LIKE</strong> <code as-element='true'>'%te_t%'</code> //matches any word that contains te(any character)t, so will match <em>"the tests"</em> and <em>"the texts"</em><br/>
+					<strong>GROUP BY</strong> <code as-element='true'>year</code><br/>
+					<strong>ORDER BY</strong> <code as-element='true'>price</code><br/>
+					<strong>LIMIT</strong> <code as-element='true'>10</code>;
+				</div>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">Manipulation</h4>
+			</div>
+			<div class="panel-body">
+				<p><strong>Create a Table</strong>: <code as-element='true'>CREATE TABLE celebs (id INTEGER, name TEXT, age INTEGER);</code></p>
+				<p><strong>Add a Column to a Table</strong>: <code as-element='true'>ALTER TABLE celebs ADD COLUMN twitter_handle TEXT;</code></p>
+				<p><strong>Create a Row</strong>: <code as-element='true'>INSERT INTO celebs (id, name, age) VALUES (1, 'Justin Beiber', 21);</code></p>
+				<p><strong>Update a Row</strong>: <code as-element='true'>UPDATE celebs SET age = 22 WHERE id = 1;</code></p>
+				<p><strong>Delete a Row</strong>: <code as-element='true'>DELETE FROM celebs WHERE twitter_handle IS NULL</code></p>
+			</div>
+		</div>
+	</div>
 	<div class="panel-body">
 		<accordion data.bind="[{title: 'Title 1', text: 'this is some text'}, {title: 'Title 2', text: 'this is some text'}]"></accordion>
 
