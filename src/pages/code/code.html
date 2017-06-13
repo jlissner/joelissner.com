@@ -32,9 +32,18 @@
 					<li><strong>ROUND()</strong> takes two arguments, a column name and the number of decimal places to round the values in that column.</li>
 				</ul>
 
+				<p class="lead">Joins are used in SQL to join multiple tables together</p>
+				<ul>
+					<li><strong>INNER JOIN</strong> will combine rows from different tables if the join condition is true.</li>
+					<li><strong>LEFT OUTER JOIN</strong> will return every row in the left table, and if the join condition is not met, <strong>NULL</strong> values are used to fill in the columns from the right table.</li>
+					<li><strong>AS</strong> is a keyword in SQL that allows you to rename a column or table in the result set using an alias.</li>
+				</ul>
+
 				<div class="alert alert-info">
 					<strong>SELECT</strong> <code as-element='true'>*</code>, <code as-element='true'>col1 <em>[as c1]</em></code>, <code as-element='true'>col2</code>, <code as-element='true'><strong>COUNT</strong>(*)</code>, <code as-element='true'><strong>MAX</strong>(price)</code>, <code as-element='true'><strong>MIN</strong>(price)</code>, <code as-element='true'><strong>ROUND</strong>(<strong>AVG</strong>(price), 2)</code>, <code as-element='true'><strong>SUM</strong>(col2)</code><br/>
 					<strong>FROM</strong> <code as-element='true'>table1 <em>[as t1]</em></code><br/>
+					<strong>JOIN</strong> <code as-element='true'>table2 <em>[as t2]</em></code> <strong>ON</strong><br/>
+					<code as-element='true'>table1.category_id</code> = <code as-element='true'>table2.id</code><br />
 					<strong>WHERE</strong> <code as-element='true'>price</code> > <code as-element='true'>0</code><br/>
 					<strong>AND</strong> <code as-element='true'>price</code> < <code as-element='true'>100</code><br/>
 					<strong>AND</strong> <code as-element='true'>year</code> <strong>BETWEEN</strong> <code as-element='true'>1990</code> <strong>AND</strong> <code as-element='true'>2000</code><br/>
@@ -51,7 +60,7 @@
 				<h4 class="panel-title">Manipulation</h4>
 			</div>
 			<div class="panel-body">
-				<p><strong>Create a Table</strong>: <code as-element='true'>CREATE TABLE celebs (id INTEGER, name TEXT, age INTEGER);</code></p>
+				<p><strong>Create a Table</strong>: <code as-element='true'>CREATE TABLE celebs (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);</code></p>
 				<p><strong>Add a Column to a Table</strong>: <code as-element='true'>ALTER TABLE celebs ADD COLUMN twitter_handle TEXT;</code></p>
 				<p><strong>Create a Row</strong>: <code as-element='true'>INSERT INTO celebs (id, name, age) VALUES (1, 'Justin Beiber', 21);</code></p>
 				<p><strong>Update a Row</strong>: <code as-element='true'>UPDATE celebs SET age = 22 WHERE id = 1;</code></p>
