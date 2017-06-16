@@ -6,22 +6,79 @@
 		
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4 class="panel-title">Query</h4>
+				<h3 class="panel-title">Basics</h3>
 			</div>
 			<div class="panel-body">
-				<p class="lead">Basic Querying</p>
 				<ul>
 
 					<li><strong>SELECT</strong> is the clause you use every time you want to query information from a database.</li>
-					<li><strong>DISTINCT</strong> is used to return unique values in the result set. It filters out all duplicate values.</li>
+					<li><strong>DISTINCT</strong> is used to return unique values in the result set, filtering out all duplicate values.</li>
+					<li><strong>FROM</strong> is used to define the dataset your are querying against.</li>
 					<li><strong>WHERE</strong> is a popular command that lets you filter the results of the query based on conditions that you specify.</li>
-					<li><strong>LIKE</strong> and <strong>BETWEEN</strong> are special operators that can be used in a <strong>WHERE</strong> clause</li>
-					<li><strong>AND</strong> and <strong>OR</strong> are special operators that you can use with <strong>WHERE</strong> to filter the query on two or more conditions.</li>
+					<li><strong>LIKE</strong> &amp; <strong>BETWEEN</strong> are special operators that can be used in a <strong>WHERE</strong> clause</li>
+					<li><strong>AND</strong> &amp; <strong>OR</strong> are special operators that you can use with <strong>WHERE</strong> to filter the query on two or more conditions.</li>
 					<li><strong>ORDER</strong> BY lets you sort the results of the query in either ascending or descending order.</li>
 					<li><strong>LIMIT</strong> lets you specify the maximum number of rows that the query will return. This is especially important in large tables that have thousands or even millions of rows.</li>
 				</ul>
 
-				<p class="lead">Aggregate functions combine multiple rows together to form a single value of more meaningful information.</p>
+				<h4>Examples</h4>
+				<p>
+<pre><code as-element='true'>SELECT *
+FROM villans
+WHERE people_killed > 1000000000
+LIMIT 10;</code></pre>
+				</p>
+				<p>
+<pre><code as-element='true'>SELECT
+  name,
+  power
+FROM heroes
+WHERE
+  power LIKE '%super%'
+  AND age >= 25;</code></pre>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Joins</h3>
+			</div>
+			<div class="panel-body">
+				<ul>
+					<li><strong>INNER JOIN</strong> will combine rows from different tables if the join condition is true.</li>
+					<li><strong>LEFT OUTER JOIN</strong> will return every row in the left table, &amp; if the join condition is not met, <strong>NULL</strong> values are used to fill in the columns from the right table.</li>
+					<li><strong>AS</strong> is a keyword in SQL that allows you to rename a column or table in the result set using an alias.</li>
+					<li><strong>ON</strong> defines how to link the two tables together.</li>
+					<li><strong>USING</strong> is a keyword that you can use in place of <strong>ON</strong> when the column names are the same</li>
+				</ul>
+
+				<h4>Examples</h4>
+				<p>
+<pre><code as-element='true'>SELECT
+  t1.name,
+  t2.hobby
+FROM
+  table1 as t1
+  JOIN table2 as t2 on
+    t1.hobby_id = t2.hobby_id;</code></pre>
+				</p>
+				<p>
+<pre><code as-element='true'>SELECT
+  t1.name,
+  t2.hobby
+FROM
+  table1 as t1
+  LEFT JOIN table2 as t2 using (hobby_id);</code></pre>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Aggregate Functions</h3>
+			</div>
+			<div class="panel-body">
 				<ul>
 					<li><strong>COUNT()</strong> takes the name of a column(s) as an argument and counts the number of rows where the value(s) is not NULL.</li>
 					<li><strong>GROUP BY</strong> is a clause used with aggregate functions to combine data from one or more columns.</li>
@@ -32,32 +89,133 @@
 					<li><strong>ROUND()</strong> takes two arguments, a column name and the number of decimal places to round the values in that column.</li>
 				</ul>
 
-				<p class="lead">Joins are used in SQL to join multiple tables together</p>
-				<ul>
-					<li><strong>INNER JOIN</strong> will combine rows from different tables if the join condition is true.</li>
-					<li><strong>LEFT OUTER JOIN</strong> will return every row in the left table, and if the join condition is not met, <strong>NULL</strong> values are used to fill in the columns from the right table.</li>
-					<li><strong>AS</strong> is a keyword in SQL that allows you to rename a column or table in the result set using an alias.</li>
-				</ul>
-
-				<div class="alert alert-info">
-					<strong>SELECT</strong> <code as-element='true'>*</code>, <code as-element='true'>col1 <em>[as c1]</em></code>, <code as-element='true'>col2</code>, <code as-element='true'><strong>COUNT</strong>(*)</code>, <code as-element='true'><strong>MAX</strong>(price)</code>, <code as-element='true'><strong>MIN</strong>(price)</code>, <code as-element='true'><strong>ROUND</strong>(<strong>AVG</strong>(price), 2)</code>, <code as-element='true'><strong>SUM</strong>(col2)</code><br/>
-					<strong>FROM</strong> <code as-element='true'>table1 <em>[as t1]</em></code><br/>
-					<strong>JOIN</strong> <code as-element='true'>table2 <em>[as t2]</em></code> <strong>ON</strong><br/>
-					<code as-element='true'>table1.category_id</code> = <code as-element='true'>table2.id</code><br />
-					<strong>WHERE</strong> <code as-element='true'>price</code> > <code as-element='true'>0</code><br/>
-					<strong>AND</strong> <code as-element='true'>price</code> < <code as-element='true'>100</code><br/>
-					<strong>AND</strong> <code as-element='true'>year</code> <strong>BETWEEN</strong> <code as-element='true'>1990</code> <strong>AND</strong> <code as-element='true'>2000</code><br/>
-					<strong>OR</strong> <code as-element='true'>category</code> <strong>LIKE</strong> <code as-element='true'>'%te_t%'</code> //matches any word that contains te(any character)t, so will match <em>"the tests"</em> and <em>"the texts"</em><br/>
-					<strong>GROUP BY</strong> <code as-element='true'>year</code><br/>
-					<strong>ORDER BY</strong> <code as-element='true'>price</code><br/>
-					<strong>LIMIT</strong> <code as-element='true'>10</code>;
-				</div>
+				<h4>Examples</h4>
+				<p>
+<pre><code as-element='true'>SELECT
+  name,
+  SUM(price) as money_made,
+  COUNT(*) as total_sold
+FROM dishes_sold
+WHERE price IS NOT NULL
+GROUP BY name;</code></pre>
+				</p>
+				<p>
+<pre><code as-element='true'>SELECT
+  ticker,
+  MIN(price) as low,
+  MAX(price) as max,
+  ROUND(AVG(price), 2) as average
+FROM stocks
+GROUP BY 1;</code></pre>
+				</p>
 			</div>
 		</div>
 
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<h4 class="panel-title">Manipulation</h4>
+				<h3 class="panel-title">Data Functions</h3>
+			</div>
+			<div class="panel-body">
+				<ul>
+					<li><strong>DATE()</strong> Returns the date and time of the column specified. This can be modified to return only the date or only the time.</li>
+					<li><strong>DATETIME(time1, +X hours, Y minutes, Z days)</strong> Increments the specificed column by a given number of hours, minutes, or days.</li>
+					<li><strong>(number1 + numbder2)</strong> Adds the two numbers together</li>
+					<li><strong>CAST(something AS DATATYPE)</strong> Converts something into the defined DATATYPE.</li>
+					<li><strong>||</strong> Is used to concat strings.</li>
+					<li><strong>REPLACE(string, from_string, to_string)</strong> Given a string, replaces all of the "from_strong" with "to_string"</li>
+				</ul>
+
+				<h4>Examples</h4>
+				<p>
+<pre><code as-element='true'>SELECT
+  CAST(age AS INTEGER) as age, 
+  years_in_europe + years_in_asia as years_abroad, 
+  DATE(start_school) as start_date, 
+  DATETIME(start_school, '+4 years') as goal_graduation 
+FROM students;</code></pre>
+				</p>
+				<p>
+<pre><code as-element='true'>SELECT
+  'first_name' || ' ' || 'last_name' as author,
+  REPLACE(directions, '_', ' ') as directions
+FROM recipes;</code></pre>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Table Transformation</h3>
+			</div>
+			<div class="panel-body">
+				<p class="lead">Table transformations allow for more complicated queries and aggregates to create meaningful information from your data.</p>
+				<ul>
+					<li><strong>Subqueries</strong> are used to complete a SQL transformation by nesting one query within another query.</li>
+					<li><strong>UNION</strong> is used to combine columns of the same name from different tables.</li>
+					<li><strong>UNION ALL</strong> works the same as <strong>UNION</strong>, but includes duplicate values.</li>
+					<li><strong>INTERSECT</strong> is used to combine two <strong>SELECT</strong> statements, but returns rows only from the first <strong>SELECT</strong> statement that are identical to a row in the second <strong>SELECT</strong> statement.</li>
+					<li><strong>EXCEPT</strong> returns distinct rows from the first <strong>SELECT</strong> statement that aren’t output by the second <strong>SELECT</strong> statement.</li>
+					<li><strong>CASE</strong> statements allow for custom classifiction and came be used inside aggregate functions like <strong>SUM()</strong> and <strong>COUNT()</strong></li>
+				</ul>
+				<hr>
+				<h4>Examples</h4>
+				<h5>Subquery Example</h5>
+				<p>
+<pre><code as-element='true'>SELECT
+  name,
+  age,
+  (
+    SELECT
+      COUNT(*)
+    FROM
+      toys
+    WHERE
+      toy.owner = people.id
+  ) as toys_owned
+FROM
+  people;</code></pre>
+				</p>
+
+				<h5>Show All Categories from Both Tables</h5>
+				<p>
+<pre><code as-element='true'>SELECT category FROM legacy_products
+UNION
+SELECT category FROM new_products;</code></pre>
+				</p>
+
+				<h5>Show categories that is in both legacy_products NOT new_products</h5>
+				<p>
+<pre><code as-element='true'>SELECT category FROM legacy_products
+INTERSECT
+SELECT category FROM new_products;</code></pre>
+				</p>
+
+				<h5>Show categories that is in legacy_products BUT NOT new_products</h5>
+				<p>
+<pre><code as-element='true'>SELECT category FROM legacy_products
+EXCEPT
+SELECT category FROM new_products;</code></pre>
+				</p>
+
+				<h5>Case Statement Example</h5>
+				<p>
+<pre><code as-element='true'>SELECT
+  CASE
+    WHEN elevation < 500 THEN 'Low'
+    WHEN elevation BETWEEN 500 AND 1999 THEN 'Medium'
+    WHEN elevation >= 2000 THEN 'High'
+    ELSE 'Unknown'
+  END AS elevation_tier,
+  COUNT(*)
+FROM airports
+GROUP BY 1;</code></pre>
+				</p>
+			</div>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">Manipulation</h3>
 			</div>
 			<div class="panel-body">
 				<p><strong>Create a Table</strong>: <code as-element='true'>CREATE TABLE celebs (id INTEGER PRIMARY KEY, name TEXT, age INTEGER);</code></p>
