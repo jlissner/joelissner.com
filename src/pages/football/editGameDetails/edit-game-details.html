@@ -1,0 +1,48 @@
+<template>
+	<div class='panel panel-default'>
+		<div class="panel-heading"><h3 class="panel-title">Edit Game Details</h3></div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-xs-12 col-sm-6">
+					<h2>Home: ${this.homeTeam || '[Team]'} <small>${this.homeQb || ''}</small></h2>
+
+					<div class="form-horizontal">
+						<label class="form-group">
+							<span class="col-sm-2 control-label">Team: </span>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" value.bind='this.homeTeam' placeholder="Home Team">
+							</div>
+						</label>
+						<label class="form-group">
+							<span class="col-sm-2 control-label">QB: </span>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" value.bind='this.homeQb'>
+							</div>
+						</label>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6">
+					<h2>Away: ${this.awayTeam || '[Team]'} <small>${this.awayQb || ''}</small></h2>
+
+					<div class="form-horizontal">
+						<label class="form-group">
+							<span class="col-sm-2 control-label">Team: </span>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" value.bind='this.awayTeam' placeholder="Away Team">
+							</div>
+						</label>
+						<label class="form-group">
+							<span class="col-sm-2 control-label">QB: </span>
+							<div class="col-sm-10">
+								<input type="text" class="form-control" value.bind='this.awayQb'>
+							</div>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="panel-footer text-right">
+			<button class='btn btn-primary' click.trigger="toggleEditMode()" disabled.bind="!(this.homeTeam && this.homeQb && this.awayTeam && this.awayQb)">Save</button>
+		</div>
+	</div>
+</template>
