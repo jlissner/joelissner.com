@@ -1,0 +1,89 @@
+.play {
+	margin: 0 -15px;
+	clear: both;
+	&.play__edit {
+
+	}
+
+	&:before,
+	&:after {
+		content: ' ';
+		display: table;
+		clear: both;
+	}
+}
+
+.play--offense,
+.play--defense {
+	width: 50%;
+	float: left;
+	padding: 5px 15px;
+}
+ 
+.play--offense {
+
+}
+
+.play--defense {
+	background: #ccc;
+}
+
+.play--completed,
+.play--down,
+.play--play,
+.play--player,
+.play--yardage,
+.play--def-play,
+.play--def-player {
+	display: block;
+	float: left;
+	min-height: 1px;
+	padding: 0 6px;
+}
+
+.play--completed {
+	&.play--completed__true .fa-times,
+	&.play--completed__false .fa-check {
+			color: #ccc;
+	}
+}
+
+.play--down {
+	text-align: right;
+	padding-right: 0;
+
+	.play__edit & {
+		top: 0;
+		position: relative;
+		transition: top .23s ease-in-out;
+	}
+	
+	.play-down--downs{
+		top: 0;
+		position: relative;
+		transition: top .23s ease-in-out;
+
+		&.play-down--downs__2 {
+			top: -1.40em;
+		}
+		&.play-down--downs__3 {
+			top: -2.85em;
+		}
+		&.play-down--downs__4 {
+			top: -4.25em;
+		}
+	}
+}
+
+.play--play {
+	padding-left: 0;
+
+	&.play--play__inactive {
+		color: #ccc;
+	}
+}
+.play--player { width: 50%; }
+.play--yardage { width: 15%; }
+
+.play--def-play { width: 50%; }
+.play--def-player { width: 50%; }

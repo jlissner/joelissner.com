@@ -1,9 +1,14 @@
+import $ from 'jquery';
+
+/* eslint-disable */
 function uuid() {
 	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
 		var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
 		return v.toString(16);
 	});
 }
+/* eslint-enable */
+
 export class Football {
 	constructor() {
 		this.editGameDetails = true;
@@ -24,7 +29,35 @@ export class Football {
 	}
 
 	toggleOffense() {
+		this.down = 1;
 		this.offense = !this.offense;
+	}
+
+	togglePlay() {
+		this.play = this.play === 'R' ? '' : 'R';
+	}
+
+	setCompleted(isCompleted) {
+		this.comp = isCompleted;
+	}
+
+	setDown(down) {
+		this.down = down;
+	}
+
+	validateYardage(e) {
+		const $this = $(e.target);
+		const val = parseInt($this.val(), 10);
+
+		if (isNaN(val)) {
+			$this.val(0);
+		} else if (val < -100) {
+			$this.val(-99);
+		} else if (val > 120) {
+			$this.val(99);
+		} else {
+			$this.val(val);
+		}
 	}
 
 	addPlay() {

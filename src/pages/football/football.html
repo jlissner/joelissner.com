@@ -1,4 +1,5 @@
 <template>
+	<require from="./football.css"></require>
 	<div class="container">
 		<h1 style="color: white;">Football!</h1>
 		
@@ -20,53 +21,10 @@
 					repeat.for="play of plays"
 					model.bind="play"
 				></compose>
-				
-				<form class="row">
-					<div class="col-xs-6 form-group ${offense ? '' : 'pull-right'}">
-						<div class="row">
-							<div class="col-xs-1 text-center">
-								&nbsp;
-								<input type="checkbox" checked.bind="comp">
-							</div>
-							<div class="col-xs-2">
-								Down
-								<input class='form-control' type="number" min="1" max="4" value.bind="down">
-							</div>
-							<div class="col-xs-2">
-								Play
-								<select class='form-control' type="text" value.bind="play">
-									<option></option>
-									<option value="R">Run</option>
-								</select>
-							</div>
-							<div class="col-xs-5">
-								Player Name
-								<input class='form-control' type="text" value.bind="player">
-							</div>
-							<div class="col-xs-2">
-								Yardage
-								<input class='form-control' type="number" min="-99" max="99" value.bind="yardage">
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-6 form-group" style="background: lightgray;">
-						<div class="row">
-							<div class="col-xs-6">
-								Def Play
-								<input class='form-control' type="text" value.bind="defPlay">
-							</div>
-							<div class="col-xs-6">
-								Def Player Name
-								<input class='form-control' type="text" value.bind="defPlayer">
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-12 text-right">
-						<button class="btn btn-primary" click.trigger="toggleOffense()">Turnover</button>
-						<button class="btn btn-primary" click.trigger="addPlay(comp, down, play, player, yardage, defPlay, defPlayer)">Add Play</button>
-					</div>
-				</form>
+				<h2>here ${yardage}</h2>
+				<compose
+					view="./play/edit-play.html">
+				</compose>
 			</div>
 			<div class="panel-footer text-right">
 				<button class='btn btn-default' click.trigger="toggleEditMode()">Edit Game Details</button>

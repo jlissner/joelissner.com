@@ -21,10 +21,12 @@ export class OpenCustomAttribute {
 	}
 
 	isOpenChanged(newValue, oldValue) {
+		const speed = parseInt(this.speed, 10) || 270;
+
 		if (newValue) {
-			this.$this.stop().slideDown(parseInt(this.speed, 10) || 270);
+			this.$this.stop().slideDown(speed);
 		} else {
-			this.$this.stop().slideUp(parseInt(this.speed, 10) || 270);
+			this.$this.stop().slideUp(speed);
 		}
 	}
 }
