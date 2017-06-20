@@ -1,8 +1,14 @@
+function uuid() {
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+		return v.toString(16);
+	});
+}
 export class Football {
 	constructor() {
 		this.editGameDetails = true;
-		this.game = {};
-		this.drives = [];
+		this.game = uuid();
+		this.offense = true;
 		this.plays = [];
 		this.comp = false;
 		this.down = 1;
@@ -17,8 +23,14 @@ export class Football {
 		this.editGameDetails = !this.editGameDetails;
 	}
 
+	toggleOffense() {
+		this.offense = !this.offense;
+	}
+
 	addPlay() {
 		this.plays.push({
+			game: this.game,
+			offense: this.offense,
 			comp: this.comp,
 			down: this.down,
 			play: this.play,
