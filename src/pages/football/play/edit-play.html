@@ -1,30 +1,28 @@
 <template>
-	<form submit.trigger="addPlay(comp, down, play, player, yardage, defPlay, defPlayer)" class="play play__edit">
-		<div class="play--offense form-group ${offense ? '' : 'pull-right'}">
-			<span class="play--completed ${comp ? 'play--completed__true' : 'play--completed__false'}">
-				<i class="fa fa-fw fa-check" click.trigger="setCompleted(true)" aria-hidden=true></i>
-				<i class="fa fa-fw fa-times" click.trigger="setCompleted(false)" aria-hidden=true></i>
+	<require from="../../../resources/binding-behaviors/validate-number-binding-behavior"></require>
+
+	<div class="play play__edit">
+		<div class="play--offense ${offense ? '' : 'pull-right'}">
+			<span class="play--completed">
+				<i class="fa fa-fw fa-check ${(!comp || play) && 'text-muted' || ''}" click.trigger="setCompleted(true)" aria-hidden=true></i>
+				<i class="fa fa-fw fa-times ${(comp || play) && 'text-muted' || ''}" click.trigger="setCompleted(false)" aria-hidden=true></i>
 			</span>
 			<span class="play--down">
 				<div class="play-down--downs play-down--downs__${down}">
-					<div class="${down === 1 ? '' : 'text-muted'}" click.trigger="setDown(1)">1</div>
-					<div class="${down === 2 ? '' : 'text-muted'}" click.trigger="setDown(2)">2</div>
-					<div class="${down === 3 ? '' : 'text-muted'}" click.trigger="setDown(3)">3</div>
-					<div class="${down === 4 ? '' : 'text-muted'}" click.trigger="setDown(4)">4</div>
+					<div class="play-down--down ${down === 1 ? '' : 'text-muted'}" click.trigger="setDown(1)">1</div>
+					<div class="play-down--down ${down === 2 ? '' : 'text-muted'}" click.trigger="setDown(2)">2</div>
+					<div class="play-down--down ${down === 3 ? '' : 'text-muted'}" click.trigger="setDown(3)">3</div>
+					<div class="play-down--down ${down === 4 ? '' : 'text-muted'}" click.trigger="setDown(4)">4</div>
 				</div>
 			</span>
 			<span class="play--play ${play ? '' : 'text-muted'}" click.trigger="togglePlay()">R</span>
 			<input class="form-control play--player" type="text" value.bind="player" placeholder="Player Name">
-			<input class="form-control play--yardage" type="text" input.trigger="validateYardage($event)" value.bind="yardage">
+			<input class="form-control play--yardage" type="text"  value.bind="yardage & validateNumber:-99:99 & updateTrigger:'blur'">
 		</div>
-		<div class="play--defense form-group">
+
+		<div class="play--defense">
 			<input class="form-control play--def-play" type="text" value.bind="defPlay" placeholder="Play">
 			<input class="form-control play--def-player" type="text" value.bind="defPlayer" placeholder="Player Name">
 		</div>
-		
-		<div class="text-right">
-			<button class="btn btn-primary" type='button' click.trigger="toggleOffense()">Turnover</button>
-			<button class="btn btn-primary">Add Play</button>
-		</div>
-	</form>
+	</div>
 </template>

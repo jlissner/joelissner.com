@@ -1,5 +1,5 @@
-<template>
-	<div class="play">
+<template bindable="editMode">
+	<div show.bind="!editMode"  class="play">
 		<div class="play--offense ${offense ? '' : 'pull-right'}">
 			<span class="play--completed">
 				<i class="fa fa-fw ${comp && !play ? 'fa-check' : ''}" aria-hidden=true></i>
@@ -8,11 +8,22 @@
 			<span class="play--down">${down}</span>
 			<span class="play--play">${play}</span>
 			<span class="play--player">${player}</span>
-			<span class="play--yardage">${yardage}</span>
+			<span class="play--yardage">${yardage || ''}</span>
 		</div>
 		<div class="play--defense">
 			<span class="play--def-play">${defPlay || '&nbsp;'}</span>
 			<span class="play--def-player">${defPlayer || '&nbsp;'}</span>
 		</div>
 	</div>
+
+	<form show.bind="editMode" submit.trigger="savePlay({comp, down, play, player, yardage, defPlay, defPlayer})">
+		<compose
+			view="../play/edit-play.html">
+		</compose>
+
+		<div class="text-right">
+			<button class="btn btn-primary" type='button' click.trigger="toggleOffense()">Turnover</button>
+			<button class="btn btn-primary">Add Play</button>
+		</div>
+	</form>
 </template>

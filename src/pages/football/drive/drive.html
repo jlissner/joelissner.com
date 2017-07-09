@@ -1,0 +1,26 @@
+<template bindable="editMode">
+	<div show.bind="editMode">
+		<compose
+			view-model="../play/play"
+			repeat.for="play of plays"
+			model.two-way="play"
+			editMode="false"
+		></compose>
+		
+		<form submit.trigger="addPlay({comp, down, play, player, yardage, defPlay, defPlayer})">
+			<compose
+				view="../play/edit-play.html">
+			</compose>
+
+			<div class="text-right">
+				<button class="btn btn-primary" type='button' click.trigger="toggleOffense()">Turnover</button>
+				<button class="btn btn-primary">Add Play</button>
+			</div>
+		</form>
+	</div>
+
+	<compose
+		show.bind="editMode"
+		view="./drive-edit.html"
+	></compose>
+</template>

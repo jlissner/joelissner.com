@@ -18,6 +18,9 @@
 	width: 50%;
 	float: left;
 	padding: 5px 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
  
 .play--offense {
@@ -35,33 +38,36 @@
 .play--yardage,
 .play--def-play,
 .play--def-player {
-	display: block;
-	float: left;
-	min-height: 1px;
-	padding: 0 6px;
 }
 
 .play--completed {
+	width: 64px;
+
 	&.play--completed__true .fa-times,
 	&.play--completed__false .fa-check {
-			color: #ccc;
+		color: #ccc;
 	}
 }
 
 .play--down {
-	text-align: right;
-	padding-right: 0;
+	padding: 0 6px;
+	width: 22px;
 
 	.play__edit & {
-		top: 0;
 		position: relative;
-		transition: top .23s ease-in-out;
+		height: 26px;
+		overflow: hidden;
+
+		&:hover {
+			overflow: visible;
+		}
 	}
 	
 	.play-down--downs{
 		top: 0;
-		position: relative;
-		transition: top .23s ease-in-out;
+		position: absolute;
+		transition: all .23s ease-in-out;
+		left: 0px;
 
 		&.play-down--downs__2 {
 			top: -1.40em;
@@ -72,18 +78,54 @@
 		&.play-down--downs__4 {
 			top: -4.25em;
 		}
+
+		.play-down--down {
+			padding: 0 6px;
+			transition: all .27s;
+
+			&.text-muted {
+				opacity: 0;
+				pointer-events: none;
+			}
+		}
+
+		&:hover {
+			background: #f6f6f6;
+
+			.play-down--down.text-muted {
+				opacity: 1;
+				pointer-events: initial;
+			}
+		}
 	}
 }
 
 .play--play {
-	padding-left: 0;
-
-	&.play--play__inactive {
-		color: #ccc;
-	}
+	width: 19px;
+	padding-right: 6px;
 }
-.play--player { width: 50%; }
+.play--player {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 60%;
+}
 .play--yardage { width: 15%; }
 
 .play--def-play { width: 50%; }
 .play--def-player { width: 50%; }
+
+@keyframes showDowns {
+	0% {
+		opacity: 0;
+		left: 0;
+	}
+
+	99% {
+		opacity: 0;
+		left: 100%;
+	}
+
+	100% {
+		left: 100%;
+	}
+}
